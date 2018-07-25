@@ -23,6 +23,8 @@ public interface UserRepository extends CrudRepository<User, Long> {
     @Query("update User u set u.username= ?1  where u.userId= ?2")
 	  public void updateUserName( String userName , long userId);
 	
+	
+	
 //	@Modifying
 //    @Transactional
 //    @Query("delete from User u where u.userId = ?1")

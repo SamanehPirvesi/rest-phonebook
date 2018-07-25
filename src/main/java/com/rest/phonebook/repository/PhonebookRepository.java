@@ -34,5 +34,8 @@ public interface PhonebookRepository extends CrudRepository<Phonebook, Long> {
 	@Query("select p from Phonebook p where user_userId=?1 and id=?2 ")
 	public Phonebook getPhoneBookById( long id , long phonebookId);
 
-	
+	@Modifying
+    @Transactional
+    @Query("delete from Phonebook p where p.id = ?1 and user_userId=?2")
+   public void deletePhonebookById(long phonebookid , long userid);
 }

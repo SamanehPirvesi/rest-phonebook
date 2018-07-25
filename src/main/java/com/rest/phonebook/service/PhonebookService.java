@@ -1,14 +1,12 @@
 package com.rest.phonebook.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
-
 import com.rest.phonebook.model.Contact;
 import com.rest.phonebook.model.Phonebook;
-import com.rest.phonebook.model.User;
+
 import com.rest.phonebook.repository.PhonebookRepository;
 
 @Service
@@ -40,8 +38,8 @@ public class PhonebookService {
 	public Phonebook getPhoneBookById( long id , long phonebookId) {
 		 return phonebookRepository.getPhoneBookById(id, phonebookId);
 	 }
-	public void deletePhonebook(Long id) {
-		phonebookRepository.deleteById(id);
+	public void deletePhonebook(Long phonebookId, long useId) {
+		phonebookRepository.deletePhonebookById(phonebookId, useId);
 		
 	
 	}

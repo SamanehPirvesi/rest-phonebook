@@ -34,30 +34,30 @@ public class PhonebookController {
 
 
 	@GetMapping("/{phonebookId}")
-	public Phonebook getPhonebookById(@PathVariable("userId") int userId,@PathVariable("phonebookId") int phonebookId) {
+	public Phonebook getPhonebookById(@PathVariable("userId") long userId,@PathVariable("phonebookId") long phonebookId) {
 	return phonebookService.getPhoneBookById(userId, phonebookId);
 	}
 	
 	@GetMapping()
-	public List<Phonebook> getPhonebooksOfUser(@PathVariable("userId") int userId) {
+	public List<Phonebook> getPhonebooksOfUser(@PathVariable("userId") long userId) {
 	return phonebookService.listOfPhonebookForUser(userId);
 	}
 	
 	@PostMapping()
- public void addPhonebook(@PathVariable("userId") int userId  , @RequestBody Phonebook phonebook) {
+ public void addPhonebook(@PathVariable("userId") long userId  , @RequestBody Phonebook phonebook) {
 		User user=userService.getUserById(userId).orElse(null);
 		phonebook.setUser(user);
 		user.addphonebook(phonebook);
 	 phonebookService.createPhonebook(phonebook);
  }
 	@PutMapping("/{phonebookId}")
-	public void updatePhonebook(@PathVariable("userId") int userId,@PathVariable("phonebookId") int phonebookId,@RequestBody Phonebook ph) {
+	public void updatePhonebook(@PathVariable("userId") long userId,@PathVariable("phonebookId") long phonebookId,@RequestBody Phonebook ph) {
 		phonebookService.updatePhonebookName(ph.getPhonebookname(), phonebookId, userId);
 				
 	}
 	@DeleteMapping("/{phonebookId}")
-	public void deletePhonebook(@PathVariable("phonebookId") long phonebookId) {
-		phonebookService.deletePhonebook(phonebookId);	
+	public void deletePhonebook(@PathVariable("phonebookId") long phonebookId,@PathVariable("userId") long userId) {
+		phonebookService.deletePhonebook(phonebookId,userId);	
 	}
 	
 	

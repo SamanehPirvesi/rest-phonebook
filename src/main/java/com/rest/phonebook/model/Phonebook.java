@@ -20,6 +20,7 @@ public class Phonebook {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	private String phonebookname;
+	@JsonIgnore
 	@OneToMany(mappedBy="phonebook",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
 	List<Contact> listContact=new ArrayList<>();
 	@JsonIgnore

@@ -1,5 +1,6 @@
 package com.rest.phonebook.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +30,19 @@ public class ContactService {
 	public void deleteContactByName(String name) {
 		 contactRepository.deleteByName(name);
 	}
- 	  public void updateContact( String contactName , String tellnumber ,  long id) {
- 		 contactRepository.updateContact(contactName, tellnumber, id);
+ 	  public void updateContact(String contactName , String tellnumber ,long contactId , long phonebookId) {
+ 		 contactRepository.updateContact(contactName, tellnumber, contactId, phonebookId);
  	  }
+ 	 public Contact getContacById( long phonebookId , long contactId) {
+ 		return contactRepository.getContacById(phonebookId, contactId);
+ 	 }
+ 	public List<Contact> listOfContactForPhonebook(long phonebookId){
+ 		return contactRepository.listOfContactForPhonebook(phonebookId);
+ 	}
+ 	public void deleteContactById(long contactId , long phonebookId) {
+ 		contactRepository.deleteContactById(contactId, phonebookId);
+ 	}
+    
 
 
 }
