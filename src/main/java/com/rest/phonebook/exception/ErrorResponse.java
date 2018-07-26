@@ -7,7 +7,6 @@ public class ErrorResponse {
 	private String timestamp;
 	
 	
-
 	public ErrorResponse() {
 	}
 

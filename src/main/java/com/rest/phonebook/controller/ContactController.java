@@ -43,7 +43,8 @@ public class ContactController {
 	}
 
 	@GetMapping()
-	public ResponseEntity<List<Contact>> getContactsForPhonebook(@PathVariable("userId") long userId,@PathVariable("phonebookId") long phonebookId) {
+	public ResponseEntity<List<Contact>> getContactsForPhonebook(@PathVariable("userId") long userId,
+			@PathVariable("phonebookId") long phonebookId) {
 		Phonebook phonebook = phonebookService.getPhoneBookById(userId, phonebookId);
 		if (phonebook == null) {
 			throw new UserNotFoundException(" User or phonebook does not exist ");
@@ -52,7 +53,8 @@ public class ContactController {
 	}
 
 	@PostMapping()
-	public void addContact(@PathVariable("userId") long userId, @PathVariable("phonebookId") long phonebookId,@RequestBody Contact contact) {
+	public void addContact(@PathVariable("userId") long userId, @PathVariable("phonebookId") long phonebookId,
+			@RequestBody Contact contact) {
 		Phonebook phonebook = phonebookService.getPhoneBookById(userId, phonebookId);
 		if (phonebook == null) {
 			throw new UserNotFoundException("user or phonebook does not exist ");
@@ -63,20 +65,21 @@ public class ContactController {
 	}
 
 	@PutMapping("/{contactId}")
-	public void updatePhonebook(@PathVariable("userId") long userId, @PathVariable("phonebookId") long phonebookId,	@PathVariable("contactId") long contactId, @RequestBody Contact contact) {
+	public void updatePhonebook(@PathVariable("userId") long userId, @PathVariable("phonebookId") long phonebookId,
+			@PathVariable("contactId") long contactId, @RequestBody Contact contact) {
 		Phonebook phonebook = phonebookService.getPhoneBookById(userId, phonebookId);
 		Contact readContact = contactService.getContacById(phonebookId, contactId);
 		if (phonebook == null) {
 			throw new UserNotFoundException("user or phonebook does not exist ");
+		} else if (readContact == null) {
+			throw new UserNotFoundException("contact does not exist ");
 		}
-	 else if (readContact == null) {
-		throw new UserNotFoundException("contact does not exist ");
-	}
 		contactService.updateContact(contact.getName(), contact.getTellNumber(), contactId, phonebookId);
 	}
 
 	@DeleteMapping("/{contactId}")
-	public void deletePhonebook(@PathVariable("userId") long userId, @PathVariable("phonebookId") long phonebookId,	@PathVariable("contactId") long contactId) {
+	public void deletePhonebook(@PathVariable("userId") long userId, @PathVariable("phonebookId") long phonebookId,
+			@PathVariable("contactId") long contactId) {
 		Phonebook phonebook = phonebookService.getPhoneBookById(userId, phonebookId);
 		Contact contact = contactService.getContacById(phonebookId, contactId);
 		if (phonebook == null) {

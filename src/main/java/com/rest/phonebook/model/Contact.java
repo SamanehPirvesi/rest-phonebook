@@ -1,4 +1,5 @@
 package com.rest.phonebook.model;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -42,7 +43,6 @@ public class Contact {
 		this.name = name;
 	}
 
-	
 	public String getTellNumber() {
 		return tellNumber;
 	}
@@ -59,9 +59,4 @@ public class Contact {
 		this.phonebook = phonebook;
 	}
 
-	
-
-	
-
-	
 }

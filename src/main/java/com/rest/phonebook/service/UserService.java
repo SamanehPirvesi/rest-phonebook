@@ -15,33 +15,36 @@ import com.rest.phonebook.repository.UserRepository;
 public class UserService {
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	public void createUser(User user) {
 		userRepository.save(user);
 	}
+
 	public Optional<User> getUserById(long id) {
 		return userRepository.findById(id);
-		
 	}
+
 	public User getUserByUserName(String username) {
-		return userRepository.findByUsername(username)	;
+		return userRepository.findByUsername(username);
 	}
+
 	public List<User> getAllUser() {
 		return (List<User>) userRepository.findAll();
 	}
-	
-	public void deleteUser(User user) {
-		 userRepository.delete(user);
-		}
-	public List<Phonebook> listOfPhonebookForUser(@Param("id") long id){
-		return (List<Phonebook>) userRepository.listOfPhonebookForUser(id);
-		}
-	 public void updateUserName( String userName , long userId) {
-		 userRepository.updateUserName(userName, userId);
-	 }
-	   public void deleteById(long id) {
-		 
-		   userRepository.deleteById(id);
-	   }
 
+	public void deleteUser(User user) {
+		userRepository.delete(user);
+	}
+
+	public List<Phonebook> listOfPhonebookForUser(@Param("id") long id) {
+		return (List<Phonebook>) userRepository.listOfPhonebookForUser(id);
+	}
+
+	public void updateUserName(String userName, long userId) {
+		userRepository.updateUserName(userName, userId);
+	}
+
+	public void deleteById(long id) {
+		userRepository.deleteById(id);
+	}
 }

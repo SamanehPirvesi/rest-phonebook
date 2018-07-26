@@ -16,18 +16,18 @@ public class PhonebookService {
 
 	public Phonebook findByphonebookname(String name) {
 		return phonebookRepository.findByphonebookname(name);
-
 	}
-	
-	public void createPhonebook(Phonebook phonebook ) {
+
+	public void createPhonebook(Phonebook phonebook) {
 		phonebookRepository.save(phonebook);
 	}
+
 	public List<Contact> listOfContactForPhonebook(@Param("id") long id) {
 		return phonebookRepository.listOfContactForPhonebook(id);
 	}
 
-	public void updatePhonebookName(String phonebookName, long id , long userId) {
-		phonebookRepository.updatePhonebookName(phonebookName, id , userId );
+	public void updatePhonebookName(String phonebookName, long id, long userId) {
+		phonebookRepository.updatePhonebookName(phonebookName, id, userId);
 	}
 
 	public List<Phonebook> listOfPhonebookForUser(long id) {
@@ -35,13 +35,11 @@ public class PhonebookService {
 
 	}
 
-	public Phonebook getPhoneBookById( long id , long phonebookId) {
-		 return phonebookRepository.getPhoneBookById(id, phonebookId);
-	 }
-	public void deletePhonebook(Long phonebookId, long useId) {
-		phonebookRepository.deletePhonebookById(phonebookId, useId);
-		
-	
+	public Phonebook getPhoneBookById(long id, long phonebookId) {
+		return phonebookRepository.getPhoneBookById(id, phonebookId);
 	}
 
+	public void deletePhonebook(Long phonebookId, long useId) {
+		phonebookRepository.deletePhonebookById(phonebookId, useId);
+	}
 }

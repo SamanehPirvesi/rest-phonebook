@@ -14,19 +14,14 @@ import com.rest.phonebook.model.User;
 
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
-	public User findByUsername(String username) ;
-	@Query("select p from Phonebook p where user_userId=id") 
-		public List<Phonebook> listOfPhonebookForUser(@Param("id") long id);
-	
+	public User findByUsername(String username);
+
+	@Query("select p from Phonebook p where user_userId=id")
+	public List<Phonebook> listOfPhonebookForUser(@Param("id") long id);
+
 	@Modifying
 	@Transactional
-    @Query("update User u set u.username= ?1  where u.userId= ?2")
-	  public void updateUserName( String userName , long userId);
-	
-	
-	
-//	@Modifying
-//    @Transactional
-//    @Query("delete from User u where u.userId = ?1")
-//   public void deleteById(long id);
+	@Query("update User u set u.username= ?1  where u.userId= ?2")
+	public void updateUserName(String userName, long userId);
+
 }
